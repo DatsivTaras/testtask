@@ -28,7 +28,7 @@ class Departments extends Model
     {
         $departmentId = $this->id;
 
-        return Employees::whereHas('departmentsEmployees', function($query) use ($departmentId) {
+            return Employees::whereHas('departmentsEmployees', function($query) use ($departmentId) {
                 return $query->where('department_id', $departmentId);
             })->max('salary');
     }

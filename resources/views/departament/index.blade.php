@@ -15,30 +15,48 @@
                 <th scope="col">{{__('employee.maxSalaryEmployee')}}</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach($departaments as $departament)    
+        @if($departaments->total() > 0)
+            <tbody>
+                @foreach($departaments as $departament)    
+                    <tr>
+                        <td>{{$departament->name}}</td>
+                        <td>{{$departament->getEmployeesCount()}}</td>
+                        <td>{{$departament->getMaxEmployeeSalary()}}</td>
+                        <td>
+                            <a href='{{route("departaments.edit", $departament->id)}}' class='btn btn-primary'>{{__('department.update')}}</a>
+                        </td>
+                        <td>
+                        @if($departament->getEmployeesCount() == 0 ? 'disabled' : '')    
+                            <form method="POST" action="{{route('departaments.destroy', $departament->id)}}">
+                                @method('DELETE')    
+                                @csrf
+                                <button class='btn btn-danger' {{$departament->getEmployeesCount() !== 0 ? 'disabled' : ''}}>{{__('department.delete')}}</button>
+                            </form>
+                        @else   
+                                <button class='btn btn-danger' {{$departament->getEmployeesCount() !== 0 ? 'disabled' : ''}}>{{__('department.delete')}}</button>
+                        @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+            @if($departaments->hasPages())
+            <tfoot>
                 <tr>
-                    <td>{{$departament->name}}</td>
-                    <td>{{$departament->getEmployeesCount()}}</td>
-                    <td>{{$departament->getMaxEmployeeSalary()}}</td>
-                    <td>
-                        <a href='{{route("departaments.edit", $departament->id)}}' class='btn btn-primary'>{{__('department.update')}}</a>
-                    </td>
-                    <td>
-                    @if($departament->getEmployeesCount() == 0 ? 'disabled' : '')    
-                        <form method="POST" action="{{route('departaments.destroy', $departament->id)}}">
-                            @method('DELETE')    
-                            @csrf
-                            <button class='btn btn-danger' {{$departament->getEmployeesCount() !== 0 ? 'disabled' : ''}}>{{__('department.delete')}}</button>
-                        </form>
-                    @else   
-                            <button class='btn btn-danger' {{$departament->getEmployeesCount() !== 0 ? 'disabled' : ''}}>{{__('department.delete')}}</button>
-                    @endif
+                    <td colspan="8">
+                        {{$departaments->links()}}
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
+            </tfoot>
+            @endif
+        @else
+            <tbody>
+                <tr>
+                    <td colspan="8" class="text-center">
+                        Нет отделов
+                    </td>
+                </tr>    
+            </tbody>
+        @endif
     </table>
-    {{$departaments->links()}}
 
 @endsection

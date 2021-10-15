@@ -28,6 +28,7 @@ class EmployeeStore extends FormRequest
             'surname' => 'required|min:2',
             'departments' => 'required',
             'salary' => 'int',
+        
         ];
     }
 

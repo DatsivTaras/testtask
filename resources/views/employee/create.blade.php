@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
+            <h3 align='center'>{{__('employee.addingEmployee')}}</h3>
                 <form  method="POST" action="{{route('employees.store')}}">
                     @csrf
                     <div class="mb-3">
@@ -27,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <label  class="form-label">{{__('employee.sex')}}</label>
-                        <select name='sex' class="form-select" aria-label="Default select example">
+                        <select name='sex' class="form-control">
                             <option value="" disabled selected>{{__('employee.sexes')}}</option>
                             @foreach($sexes as $key => $sex)
                                 <option {{old('sex') == $key ? 'selected':' '}}  value="{{$key}}">{{$sex}}</option>
@@ -40,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <label  class="form-label">{{__('department.departments')}}</label>
-                        <select name='departments[]' id='department' multiple class="form-control" >
+                        <select name='departments[]' id='department' multiple class="form-control">
                             @foreach($departments as $department)
                                 <option  value="{{$department->id}}">{{$department->name}}</option>
                             @endforeach
@@ -49,7 +50,9 @@
                             <h7 style='color:red'>{{$message}} </h7>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">{{__('employee.save')}}</button>
+                    <div align='center'>
+                        <button type="submit" class="btn btn-primary">{{__('employee.save')}}</button>
+                    </div>
                 </form>
             </div>    
         </div>    

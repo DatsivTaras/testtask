@@ -10,7 +10,7 @@
                     @method('PUT')    
                     @csrf
                     <div class="mb-4">
-                        <label  class="form-label">{{__('department.name')}} *</label>
+                        <label  class="form-label">{{__('department.title')}} *</label>
                         <input value="{{ empty(old('name')) ? $departament->name : old('name')}}" name='name' type="text" class="form-control">
                         @error('name') 
                             <h7 style='color:red'>{{$message}}</h7>

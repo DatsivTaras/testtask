@@ -9,14 +9,14 @@
                 <form  method="POST" action="{{route('departaments.store')}}">
                     @csrf
                     <div class="mb-4">
-                        <label  class="form-label">{{__('department.name')}} *</label>
+                        <label  class="form-label">{{__('department.title')}} *</label>
                         <input value="{{old('name')}}" name='name' type="text" class="form-control">
                         @error('name')
                             <h7 style='color:red'>{{$message}}</h7>
                         @enderror
                     </div>
                     <div align='center'>
-                        <button type="submit" class="btn btn-primary">{{__('department.addingDepartment')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('department.adding')}}</button>
                     </div>
                 </form>
             </div>

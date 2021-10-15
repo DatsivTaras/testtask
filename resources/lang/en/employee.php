@@ -1,11 +1,13 @@
 <?php
 
 return [
+    'title' => 'Название',
     'employee' => 'Отдели',
     'addingEmployee' => 'Добавление Отдела',
     'adding' => 'Добавить',
     'name' => 'Имя',
     'updateEmployee' => 'Редактирования Отдела',
+    'updateEmployees' => 'Редактированиe Сотрудника',
     'countsEmployees' => 'Кол-во сотрудников',
     'maxSalaryEmployee' => 'Макс. заработная плата',
     'update' => 'Редактированиe',
@@ -13,11 +15,11 @@ return [
     'surname' => 'Фамилия',
     'patronymic' => 'Отчество',
     'sex' => 'Пол',
-    'employees' => 'Сотрудник',
+    'employees' => 'Сотрудники',
     'salary' => 'Заработная плата',
-    'save' => 'Сохранить',
-    'employee' => 'Отдели',
+    'save' => 'Добавить',
+    'addingEmployee' => 'Добавление Сотрудника',
     'sexes' => 'Выберите пол',
-    'man' => 'Мужская',
-    'woman' => 'Женская'
+    'man' => 'Мужской',
+    'woman' => 'Женский'
 ];

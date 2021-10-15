@@ -15,6 +15,6 @@ class HomeController extends Controller
         $employees = Employees::paginate(20);
         $departments = Departments::all();
 
-        return view('index', compact('employees','departments'));
+        return view('index', compact('employees', 'departments'));
     }
 }
